@@ -9590,22 +9590,16 @@ parent.postMessage({ t: 'ready' }, '*');
                 }
             });
 
-            // Auto-fullscreen: browsers require a user gesture.
-            // Show a minimal splash overlay — clicking it provides the gesture and enters fullscreen.
-            (function () {
-                let autoFS = true;
-                try {if (ls.getItem('gust:autoFullscreen') === '0') autoFS = false;} catch (e) { }
-                if (!autoFS) return;
+      (function () {
+    let autoFS = true;
+    try {
+        if (ls.getItem('gust:autoFullscreen') === '0') autoFS = false;
+    } catch (e) { }
+    if (!autoFS) return;
 
-                const onFirstGesture = function () {
-                    _doRequestFullscreen().catch(() => { });
-                    document.removeEventListener('click', onFirstGesture);
-                    document.removeEventListener('keydown', onFirstGesture);
-                };
-                document.addEventListener('click', onFirstGesture);
-                document.addEventListener('keydown', onFirstGesture);
-            })();
-
+    // Attempt to request fullscreen immediately
+    _doRequestFullscreen().catch(() => { });
+})();
             // Wire up shortcuts enabled toggle
             setTimeout(() => {
                 const scSw = document.getElementById('settingsShortcutsEnabledSwitch');
