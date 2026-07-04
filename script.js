@@ -1,10 +1,9 @@
-
-        (function () {
-            // ── Private state variables ───────────────────────────────────────────────
-            // These replace former window.* leaks – intentionally not exposed on window.
-            let _netStall = 0;
-            let _lastPageLoadTime = 0;
-            // ── Scope-private utilities (Base64 + find-bar stub) ─────────────────
+(function () {
+	// ── Private state variables ───────────────────────────────────────────────
+        // These replace former window.* leaks – intentionally not exposed on window.
+        let _netStall = 0;
+        let _lastPageLoadTime = 0;
+        // ── Scope-private utilities (Base64 + find-bar stub) ─────────────────
             // These were previously in raw script scope; they are now enclosed here
             // so they cannot be enumerated or accessed via the window object.
             // ── Pure-JS Base64 utility ────────────────────────────────────────────
